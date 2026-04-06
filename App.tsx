@@ -99,7 +99,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Workflow Section */}
-      <section className="py-24 px-4 bg-slate-50">
+      <section id="platform" className="py-24 px-4 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">The Solution</span>
@@ -135,7 +135,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Stakeholders Section */}
-      <section className="py-24 px-4 bg-white">
+      <section id="programs" className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-extrabold text-slate-900 mb-6">One Platform. Multiple Stakeholders.</h2>
@@ -288,7 +288,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Compliance Section */}
-      <section className="py-16 px-4 bg-slate-50 border-t border-slate-100">
+      <section id="compliance" className="py-16 px-4 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto text-center">
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Enterprise-Ready Compliance</h3>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
