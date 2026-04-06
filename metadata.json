@@ -1,0 +1,8 @@
+{
+  "name": "Remix: GOQii Connected Care 2.0",
+  "description": "An enterprise-grade SaaS platform for hospitals to extend clinical oversight beyond discharge through AI-driven monitoring and virtual wards.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
