@@ -107,7 +107,7 @@ const App: React.FC = () => {
             </div>
 
             <p className="text-sm sm:text-base text-slate-350 max-w-2xl leading-relaxed font-normal">
-              GOQii HealthEngage helps healthcare organizations stay connected to people throughout their health journey. By bringing together hospitals, insurers, pharma companies, employers, and individuals on a single platform, we enable continuous engagement, proactive intervention, and better health outcomes.
+              Healthcare doesn't happen in one place. Patients move between hospitals, homes, insurers, employers, and therapy programs throughout their health journey. GOQii HealthEngage keeps everyone connected through a single platform that enables continuous engagement, timely interventions, and better outcomes.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-4">
