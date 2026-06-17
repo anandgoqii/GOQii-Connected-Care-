@@ -3,7 +3,7 @@ import {
   ArrowRight, MessageCircle, Check, X, Shield, Lock, 
   Database, RefreshCw, Activity, Heart, ArrowUpRight, 
   Smartphone, UserCheck, Plus, ChevronRight, Zap,
-  Droplet, Scale, Thermometer, Watch, Wind
+  Droplet, Scale, Thermometer, Watch, Wind, Cpu, ClipboardCheck
 } from 'lucide-react';
 import Header from './components/Header';
 
@@ -79,9 +79,9 @@ const App: React.FC = () => {
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0">
             <img 
-              src="/src/assets/images/doctor_remote_review_1781156839609.png" 
-              alt="Doctor reviewing patient health timeline remotely" 
-              className="w-full h-full object-cover grayscale-[10%]"
+              src="https://appcdn.goqii.com/storeimg/90664_1781697658.png" 
+              alt="Doctor reviewing patient health data" 
+              className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
             {/* Elegant dark gradient overlay to ensure perfect contrast and premium readability */}
@@ -234,8 +234,8 @@ const App: React.FC = () => {
           {/* Image */}
           <div className="lg:col-span-7 bg-slate-50 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/50 shadow-sm aspect-video sm:aspect-[16/10]">
             <img 
-              src="/src/assets/images/patient_home_recovery_1781156857242.png" 
-              alt="Patient recovering smoothly in comforting home surroundings" 
+              src="https://appcdn.goqii.com/storeimg/45571_1781697698.png" 
+              alt="Patient receiving continuous recovery care at home" 
               className="w-full h-full object-cover grayscale-[5%] hover:grayscale-0 transition-all duration-500"
               referrerPolicy="no-referrer"
             />
@@ -267,8 +267,8 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-7 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
-                  src="/src/assets/images/hospital_care_team_1781156870918.png" 
-                  alt="Modern clinic care team reviewing outpatient timeline data" 
+                  src="https://appcdn.goqii.com/storeimg/6566_1781697777.png" 
+                  alt="Modern clinical review dashboard with virtual companion tools" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -293,8 +293,8 @@ const App: React.FC = () => {
               </div>
               <div className="lg:col-span-7 order-1 lg:order-2 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
-                  src="/src/assets/images/insurance_member_family_1781156885241.png" 
-                  alt="A happy healthy family in natural living room lighting" 
+                  src="https://appcdn.goqii.com/storeimg/19813_1781697931.png" 
+                  alt="A happy healthy family in natural living room lighting with insurance support" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -305,8 +305,8 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-7 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
-                  src="/src/assets/images/pharma_patient_support_1781156904324.png" 
-                  alt="A modern therapy advising discussion session" 
+                  src="https://appcdn.goqii.com/storeimg/44294_1781697976.png" 
+                  alt="A modern therapy advising session with medication adherence tracking dashboard" 
                   className="w-full h-full object-cover animate-fade-in"
                   referrerPolicy="no-referrer"
                 />
@@ -331,8 +331,8 @@ const App: React.FC = () => {
               </div>
               <div className="lg:col-span-7 order-1 lg:order-2 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
-                  src="/src/assets/images/corporate_wellness_1781156918940.png" 
-                  alt="Professionals in balanced work environment with rich natural plants" 
+                  src="https://appcdn.goqii.com/storeimg/1463_1781698032.png" 
+                  alt="Professionals enjoying a balanced, high-energy, healthy corporate and workplace lifestyle" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -594,8 +594,8 @@ const App: React.FC = () => {
             
             <div className="lg:col-span-7 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-sm aspect-[16/10]">
               <img 
-                src="/src/assets/images/patient_using_rpm_kit_1781157488296.png" 
-                alt="Patient sitting at table at home using the RPMC cuff comfortably with family" 
+                src="https://appcdn.goqii.com/storeimg/1463_1781698032.png" 
+                alt="Patient sitting at table at home using health tracking devices comfortably" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -633,8 +633,8 @@ const App: React.FC = () => {
           {/* Image */}
           <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 shadow-sm aspect-video sm:aspect-[16/10]">
             <img 
-              src="/src/assets/images/patient_app_lifestyle_1781156934616.png" 
-              alt="Person tracking health indices in soft natural light" 
+              src="https://appcdn.goqii.com/storeimg/24521_1781698147.png" 
+              alt="Person tracking health credentials and metrics on a device in clean soft light" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -700,112 +700,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 8: Real People. Real Health Journeys. */}
-      {/* Dynamic human stories explorer gallery */}
-      <section className="py-16 sm:py-24 bg-[#FAF9F5] border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="max-w-3xl space-y-4 mb-12 sm:mb-16 text-center mx-auto">
-            <span className="text-xs uppercase tracking-widest font-bold text-slate-400 font-mono">Human Gallery</span>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-              Real People. Real Health Journeys.
-            </h3>
-            <p className="text-slate-500 text-sm sm:text-base">
-              Every interaction is an opportunity to improve someone's health experience. See what connected support looks like across critical care scenarios.
-            </p>
-          </div>
-
-          {/* Dynamic Editorial Swap Gallery Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-2xl sm:rounded-[2rem] border border-slate-200/50 p-4 sm:p-6 lg:p-10 shadow-sm items-center">
-            
-            {/* Swappable Content left (40%) */}
-            <div className="lg:col-span-5 space-y-8">
-              
-              <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-3 lg:pb-0 scrollbar-none whitespace-nowrap lg:whitespace-normal">
-                <button 
-                  onClick={() => setSelectedJourneyTab('recovery')}
-                  className={`text-left text-sm py-1.5 transition-all shrink-0 ${selectedTabClasses(selectedJourneyTab === 'recovery')}`}
-                >
-                  Post-Discharge Recovery
-                </button>
-                <button 
-                  onClick={() => setSelectedJourneyTab('wellness')}
-                  className={`text-left text-sm py-1.5 transition-all shrink-0 ${selectedTabClasses(selectedJourneyTab === 'wellness')}`}
-                >
-                  Family Wellness
-                </button>
-                <button 
-                  onClick={() => setSelectedJourneyTab('coordination')}
-                  className={`text-left text-sm py-1.5 transition-all shrink-0 ${selectedTabClasses(selectedJourneyTab === 'coordination')}`}
-                >
-                  Care Coordination
-                </button>
-                <button 
-                  onClick={() => setSelectedJourneyTab('coaching')}
-                  className={`text-left text-sm py-1.5 transition-all shrink-0 ${selectedTabClasses(selectedJourneyTab === 'coaching')}`}
-                >
-                  Health Coaching & Adherence
-                </button>
-              </div>
-
-              <div className="space-y-4">
-                {selectedJourneyTab === 'recovery' && (
-                  <>
-                    <h5 className="text-xl font-bold text-slate-900">Patient Recovery Journey</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
-                      Connecting vital monitoring sensors directly to care centers enables high-risk participants returning home to stay safely linked. Early warning patterns are identified by our system immediately.
-                    </p>
-                  </>
-                )}
-                {selectedJourneyTab === 'wellness' && (
-                  <>
-                    <h5 className="text-xl font-bold text-slate-900">Family Wellness Support</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
-                      Bringing household members directly into progress challenges builds structural behavioral reinforcement, yielding sustainable lifestyle changes.
-                    </p>
-                  </>
-                )}
-                {selectedJourneyTab === 'coordination' && (
-                  <>
-                    <h5 className="text-xl font-bold text-slate-900">Care Coordination Flow</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
-                      Integrating clinical stakeholders onto a simplified command worklist reduces administrative delays. Care pathways update smoothly based on validated patient data.
-                    </p>
-                  </>
-                )}
-                {selectedJourneyTab === 'coaching' && (
-                  <>
-                    <h5 className="text-xl font-bold text-slate-900">Personalized Health Coaching</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
-                      By pairing daily clinical therapy goals with real-time feedback loops from behavioral coaches, patient therapeutic adherence indices reach higher scores.
-                    </p>
-                  </>
-                )}
-              </div>
-
-            </div>
-
-            {/* Visual Screen Right (60%) */}
-            <div className="lg:col-span-7 bg-slate-50 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200/50 aspect-video sm:aspect-[16/10]">
-              {selectedJourneyTab === 'recovery' && (
-                <img src="/src/assets/images/patient_home_recovery_1781156857242.png" alt="Patient recovering in bright living room environment" className="w-full h-full object-cover" />
-              )}
-              {selectedJourneyTab === 'wellness' && (
-                <img src="/src/assets/images/insurance_member_family_1781156885241.png" alt="Healthy family laughing together" className="w-full h-full object-cover" />
-              )}
-              {selectedJourneyTab === 'coordination' && (
-                <img src="/src/assets/images/hospital_care_team_1781156870918.png" alt="Doctors collaborating on care pipeline" className="w-full h-full object-cover" />
-              )}
-              {selectedJourneyTab === 'coaching' && (
-                <img src="/src/assets/images/pharma_patient_support_1781156904324.png" alt="Pharma therapy adherence tracking screen" className="w-full h-full object-cover" />
-              )}
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
       {/* Section 9: Trusted For Connected Care */}
       <section id="compliance" className="py-16 sm:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
@@ -821,17 +715,19 @@ const App: React.FC = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { label: "Secure infrastructure", desc: "Data protection standards" },
-              { label: "Data privacy controls", desc: "GDPR & clinical access keys" },
-              { label: "Healthcare compliance", desc: "Interoperability regulations" },
-              { label: "Scalable architecture", desc: "ISO and high throughput ready" }
+              { label: "Secure infrastructure", desc: "Data protection standards", icon: <Shield className="w-4 h-4" /> },
+              { label: "Data privacy controls", desc: "GDPR & clinical access keys", icon: <Lock className="w-4 h-4" /> },
+              { label: "Healthcare compliance", desc: "Interoperability regulations", icon: <ClipboardCheck className="w-4 h-4" /> },
+              { label: "Scalable architecture", desc: "ISO and high throughput ready", icon: <Cpu className="w-4 h-4" /> }
             ].map((cert, i) => (
-              <div key={i} className="bg-[#FAF9F5] border border-slate-200/50 p-4 sm:p-6 rounded-2xl text-left hover:scale-[1.01] transition-transform">
-                <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mb-4">
-                  <Lock className="w-4 h-4" />
+              <div key={i} className="bg-[#FAF9F5] border border-slate-200/50 p-4 sm:p-6 rounded-2xl text-left hover:scale-[1.01] transition-transform flex flex-col justify-between min-h-[160px]">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mb-4">
+                    {cert.icon}
+                  </div>
+                  <h5 className="font-extrabold text-xs text-slate-900 mb-1">{cert.label}</h5>
+                  <p className="text-[10px] text-slate-450 leading-relaxed font-normal">{cert.desc}</p>
                 </div>
-                <h5 className="font-extrabold text-xs text-slate-900 mb-1">{cert.label}</h5>
-                <p className="text-[10px] text-slate-450 leading-relaxed font-normal">{cert.desc}</p>
               </div>
             ))}
           </div>
