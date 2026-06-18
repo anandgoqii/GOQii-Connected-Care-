@@ -78,10 +78,18 @@ const App: React.FC = () => {
         <div className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] border border-slate-200/40 shadow-2xl bg-slate-950 min-h-[560px] sm:min-h-[600px] flex items-center">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0">
+            {/* Mobile background image */}
+            <img 
+              src="https://appcdn.goqii.com/storeimg/74564_1781759070.jpg" 
+              alt="Doctor reviewing patient health data" 
+              className="w-full h-full object-cover block sm:hidden"
+              referrerPolicy="no-referrer"
+            />
+            {/* Tablet/Desktop background image */}
             <img 
               src="https://appcdn.goqii.com/storeimg/90664_1781697658.png" 
               alt="Doctor reviewing patient health data" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hidden sm:block"
               referrerPolicy="no-referrer"
             />
             {/* Elegant dark gradient overlay to ensure perfect contrast and premium readability */}
