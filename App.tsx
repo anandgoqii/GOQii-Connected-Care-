@@ -602,7 +602,7 @@ const App: React.FC = () => {
             
             <div className="lg:col-span-7 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-sm aspect-[16/10]">
               <img 
-                src="https://appcdn.goqii.com/storeimg/1463_1781698032.png" 
+                src="https://appcdn.goqii.com/storeimg/78468_1787136167.jpg" 
                 alt="Patient sitting at table at home using health tracking devices comfortably" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
