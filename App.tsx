@@ -489,27 +489,46 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: "Digital Blood Pressure Monitor", desc: "Track systolic and diastolic blood pressure with clinically validated accuracy.", icon: Heart, color: "text-rose-500 bg-rose-50 border-rose-100" },
-                { title: "Portable ECG Monitor", desc: "Capture cardiac activity and support ongoing heart health monitoring.", icon: Activity, color: "text-blue-500 bg-blue-50 border-blue-100" },
-                { title: "Pulse Oximeter", desc: "Monitor blood oxygen saturation and pulse rate in real time.", icon: Wind, color: "text-sky-500 bg-sky-50 border-sky-100" },
-                { title: "Connected Glucose Meter", desc: "Support diabetes management through seamless glucose tracking.", icon: Droplet, color: "text-amber-500 bg-amber-50 border-amber-100" },
-                { title: "Smart Weight Scale", desc: "Track weight trends and identify changes that may require intervention.", icon: Scale, color: "text-teal-500 bg-teal-50 border-teal-100" },
-                { title: "Digital Thermometer", desc: "Monitor temperature fluctuations as part of ongoing health assessments.", icon: Thermometer, color: "text-orange-500 bg-orange-50 border-orange-100" },
-                { title: "Connected Smartwatch", desc: "Capture daily activity, heart rate, sleep, and wellness indicators.", icon: Watch, color: "text-indigo-500 bg-indigo-50 border-indigo-100" }
-              ].map((device, i) => {
-                const IconComponent = device.icon;
-                return (
-                  <div key={i} className="p-6 bg-[#FAF9F5]/65 border border-slate-105 rounded-3xl hover:border-slate-250 transition-all hover:shadow-md hover:-translate-y-0.5 group">
-                    <div className={`w-10 h-10 rounded-xl border flex items-center justify-center mb-5 ${device.color} group-hover:scale-105 transition-transform`}>
-                      <IconComponent className="w-5 h-5" />
+            {/* Horizontal Continuous Marquee Container */}
+            <div className="relative overflow-hidden w-full py-4 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+              {/* Fade gradients on both edges for a polished look */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-white to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white to-transparent z-10" />
+
+              <div className="animate-marquee gap-6">
+                {[
+                  { title: "Digital Blood Pressure Monitor", desc: "Track systolic and diastolic blood pressure with clinically validated accuracy.", icon: Heart, color: "text-rose-500 bg-rose-50 border-rose-100" },
+                  { title: "Portable ECG Monitor", desc: "Capture cardiac activity and support ongoing heart health monitoring.", icon: Activity, color: "text-blue-500 bg-blue-50 border-blue-100" },
+                  { title: "Pulse Oximeter", desc: "Monitor blood oxygen saturation and pulse rate in real time.", icon: Wind, color: "text-sky-500 bg-sky-50 border-sky-100" },
+                  { title: "Connected Glucose Meter", desc: "Support diabetes management through seamless glucose tracking.", icon: Droplet, color: "text-amber-500 bg-amber-50 border-amber-100" },
+                  { title: "Smart Weight Scale", desc: "Track weight trends and identify changes that may require intervention.", icon: Scale, color: "text-teal-500 bg-teal-50 border-teal-100" },
+                  { title: "Digital Thermometer", desc: "Monitor temperature fluctuations as part of ongoing health assessments.", icon: Thermometer, color: "text-orange-500 bg-orange-50 border-orange-100" },
+                  { title: "Connected Smartwatch", desc: "Capture daily activity, heart rate, sleep, and wellness indicators.", icon: Watch, color: "text-indigo-500 bg-indigo-50 border-indigo-100" },
+                  { title: "Digital Blood Pressure Monitor", desc: "Track systolic and diastolic blood pressure with clinically validated accuracy.", icon: Heart, color: "text-rose-500 bg-rose-50 border-rose-100" },
+                  { title: "Portable ECG Monitor", desc: "Capture cardiac activity and support ongoing heart health monitoring.", icon: Activity, color: "text-blue-500 bg-blue-50 border-blue-100" },
+                  { title: "Pulse Oximeter", desc: "Monitor blood oxygen saturation and pulse rate in real time.", icon: Wind, color: "text-sky-500 bg-sky-50 border-sky-100" },
+                  { title: "Connected Glucose Meter", desc: "Support diabetes management through seamless glucose tracking.", icon: Droplet, color: "text-amber-500 bg-amber-50 border-amber-100" },
+                  { title: "Smart Weight Scale", desc: "Track weight trends and identify changes that may require intervention.", icon: Scale, color: "text-teal-500 bg-teal-50 border-teal-100" },
+                  { title: "Digital Thermometer", desc: "Monitor temperature fluctuations as part of ongoing health assessments.", icon: Thermometer, color: "text-orange-500 bg-orange-50 border-orange-100" },
+                  { title: "Connected Smartwatch", desc: "Capture daily activity, heart rate, sleep, and wellness indicators.", icon: Watch, color: "text-indigo-500 bg-indigo-50 border-indigo-100" }
+                ].map((device, i) => {
+                  const IconComponent = device.icon;
+                  return (
+                    <div 
+                      key={i} 
+                      className="w-[280px] sm:w-[320px] shrink-0 p-6 bg-[#FAF9F5]/75 border border-slate-200/80 rounded-3xl hover:border-slate-300 transition-all hover:shadow-md hover:-translate-y-0.5 group flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className={`w-10 h-10 rounded-xl border flex items-center justify-center mb-5 ${device.color} group-hover:scale-105 transition-transform`}>
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                        <h5 className="font-bold text-base text-slate-900 mb-2">{device.title}</h5>
+                        <p className="text-xs text-slate-500 leading-relaxed font-normal">{device.desc}</p>
+                      </div>
                     </div>
-                    <h5 className="font-bold text-base text-slate-900 mb-2">{device.title}</h5>
-                    <p className="text-xs text-slate-500 leading-relaxed font-normal">{device.desc}</p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 
