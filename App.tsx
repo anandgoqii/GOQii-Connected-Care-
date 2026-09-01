@@ -1,80 +1,33 @@
 import React, { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { 
-  ArrowRight, MessageCircle, Check, X, Shield, Lock, 
+  ArrowRight, MessageCircle, Check, X, Shield,
   Database, RefreshCw, Activity, Heart, ArrowUpRight, 
   Smartphone, UserCheck, Plus, ChevronRight, Zap,
-  Droplet, Scale, Thermometer, Watch, Wind, Cpu, ClipboardCheck
+  Droplet, Scale, Thermometer, Watch, Wind
 } from 'lucide-react';
 import Header from './components/Header';
+import DataProtection from './pages/DataProtection';
+import PrivacyControls from './pages/PrivacyControls';
 
-interface PatientMock {
-  id: string;
-  name: string;
-  status: 'Critical' | 'Stable' | 'Attention';
-  condition: string;
-  vital: string;
-  metric: string;
+interface MainLandingPageProps {
+  openModal: (type: 'demo' | 'expert') => void;
+  selectedJourneyTab: string;
+  setSelectedJourneyTab: (val: string) => void;
 }
 
-const App: React.FC = () => {
-  const [activeModal, setActiveModal] = useState<'demo' | 'expert' | null>(null);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [selectedJourneyTab, setSelectedJourneyTab] = useState<string>('recovery');
-  const [expertForm, setExpertForm] = useState({
-    fullName: '',
-    email: '',
-    organization: '',
-    role: '',
-    topic: '',
-    goals: '',
-    contactMethod: 'Email'
-  });
-
-  const closeAll = () => {
-    setActiveModal(null);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setExpertForm({
-        fullName: '',
-        email: '',
-        organization: '',
-        role: '',
-        topic: '',
-        goals: '',
-        contactMethod: 'Email'
-      });
-    }, 300);
-  };
-
-  const handleExpertInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setExpertForm(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
-
-  // Mock RPM center dataset
-  const rpmPatients: PatientMock[] = [
-    { id: "01", name: "Sarah Lindqvist", status: "Critical", condition: "Cardiovascular Sync", vital: "SpO2 91%", metric: "11 mins ago" },
-    { id: "02", name: "David Miller", status: "Stable", condition: "Adherence Focus", vital: "BP 124/80", metric: "Active now" },
-    { id: "03", name: "Aria Chen", status: "Attention", condition: "Post-Discharge Recovery", vital: "HR 94 bpm", metric: "2 hrs ago" }
-  ];
-
+const MainLandingPage: React.FC<MainLandingPageProps> = ({
+  openModal,
+  selectedJourneyTab,
+  setSelectedJourneyTab
+}) => {
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-[#1E293B] font-sans selection:bg-blue-105 selection:text-white antialiased overflow-x-hidden">
       {/* Premium minimal header */}
-      <Header openModal={setActiveModal} />
+      <Header openModal={openModal} />
 
       {/* Hero Section with Overlay Background */}
-      <section className="pt-24 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="overview" className="pt-24 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] border border-slate-200/40 shadow-2xl bg-slate-950 min-h-[560px] sm:min-h-[600px] flex items-center">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0">
@@ -101,7 +54,7 @@ const App: React.FC = () => {
           <div className="relative z-10 max-w-3xl px-6 py-12 sm:pl-16 sm:pr-12 md:pl-20 space-y-8 text-white">
             <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-sm">
               <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span>
-              <span className="text-[10px] font-bold tracking-widest text-[#F8FAFC] uppercase">Introducing GOQii HealthEngage</span>
+              <span className="text-[10px] font-bold tracking-widest text-[#F8FAFC] uppercase">Introducing GOQii HealthEngage ConnectedCare</span>
             </div>
 
             <div className="space-y-4">
@@ -143,7 +96,7 @@ const App: React.FC = () => {
 
       {/* Section 2: Healthcare Is Connected. Care Often Isn't. */}
       {/* 60% Left (Visual) / 40% Right (Content) */}
-      <section className="py-16 sm:py-24 border-t border-slate-100 bg-[#FAF9F5]">
+      <section id="ecosystem" className="py-16 sm:py-24 border-t border-slate-100 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Visual: Healthcare Ecosystem Infographic */}
@@ -216,7 +169,7 @@ const App: React.FC = () => {
 
       {/* Section 3: Care Doesn't End At Discharge */}
       {/* 40% Left (Content) / 60% Right (Image) */}
-      <section className="py-16 sm:py-24 bg-white">
+      <section id="care-continuity" className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Content */}
@@ -253,7 +206,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Section 4: One Platform. Multiple Healthcare Journeys. */}
-      <section className="py-16 sm:py-24 border-t border-slate-100 bg-[#FAFAFA]">
+      <section id="solutions" className="py-16 sm:py-24 border-t border-slate-100 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section heading */}
@@ -272,7 +225,7 @@ const App: React.FC = () => {
           <div className="space-y-20 sm:space-y-32">
 
             {/* HOSPITALS: Left Image (60%) / Right Content (40%) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div id="solutions-hospitals" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center scroll-mt-24">
               <div className="lg:col-span-7 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
                   src="https://appcdn.goqii.com/storeimg/6566_1781697777.png" 
@@ -291,7 +244,7 @@ const App: React.FC = () => {
             </div>
 
             {/* INSURANCE: Left Content (40%) / Right Image (60%) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div id="solutions-insurance" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center scroll-mt-24">
               <div className="lg:col-span-5 order-2 lg:order-1 space-y-4">
                 <span className="text-[11px] font-bold font-mono tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">INSURANCE</span>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug">From Reactive Claims to Health</h4>
@@ -310,7 +263,7 @@ const App: React.FC = () => {
             </div>
 
             {/* PHARMA: Left Image (60%) / Right Content (40%) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div id="solutions-pharma" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center scroll-mt-24">
               <div className="lg:col-span-7 rounded-2xl sm:rounded-[2rem] overflow-hidden border border-slate-200/60 bg-white aspect-video sm:aspect-[16/10]">
                 <img 
                   src="https://appcdn.goqii.com/storeimg/44294_1781697976.png" 
@@ -329,7 +282,7 @@ const App: React.FC = () => {
             </div>
 
             {/* EMPLOYERS: Left Content (40%) / Right Image (60%) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div id="solutions-employers" className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center scroll-mt-24">
               <div className="lg:col-span-5 order-2 lg:order-1 space-y-4">
                 <span className="text-[11px] font-bold font-mono tracking-widest text-[#059669] bg-emerald-50 px-3 py-1 rounded-full">EMPLOYERS</span>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug">Healthy, Motivated Workplaces</h4>
@@ -352,83 +305,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 5: Remote Patient Monitoring Center (RPMC) */}
-      {/* 60% Left (Visual Mockup) / 40% Right (Content) */}
-      <section className="py-16 sm:py-24 border-t border-slate-100 bg-slate-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          
-          {/* Mockup visual element with minimal annotations */}
-          <div className="lg:col-span-7 bg-slate-900 rounded-2xl sm:rounded-[2rem] border border-slate-800 p-6 md:p-8 relative shadow-2xl overflow-hidden">
-            <div className="absolute top-0 right-0 p-4">
-              <span className="w-2.5 h-2.5 bg-red-500 rounded-full inline-block animate-ping"></span>
-            </div>
-
-            <div className="space-y-1 mb-8 border-b border-slate-800 pb-5">
-              <h5 className="font-extrabold text-xs tracking-widest text-slate-400 font-mono uppercase">GOQii RPMC</h5>
-              <p className="text-sm font-semibold text-slate-200">Active Care Population Dashboard</p>
-            </div>
-
-            {/* List of active candidates */}
-            <div className="space-y-4">
-              {rpmPatients.map((patient) => (
-                <div key={patient.id} className="p-4 rounded-xl bg-slate-950/80 border border-slate-850 hover:border-blue-500/30 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-slate-500">{patient.id}</span>
-                    <div>
-                      <h6 className="font-bold text-xs text-white">{patient.name}</h6>
-                      <p className="text-[10px] text-slate-400">{patient.condition}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
-                    <div className="text-left sm:text-right">
-                      <span className="text-[10px] font-mono text-slate-305 block font-bold">{patient.vital}</span>
-                      <span className="text-[9px] text-slate-500 block">{patient.metric}</span>
-                    </div>
-                    <div>
-                      {patient.status === 'Critical' ? (
-                        <span className="bg-red-550/10 text-red-400 border border-red-500/20 text-[9px] font-bold px-2 py-0.5 rounded-full">Trig</span>
-                      ) : patient.status === 'Attention' ? (
-                        <span className="bg-amber-500/10 text-amber-400 border border-amber-550/25 text-[9px] font-bold px-2 py-0.5 rounded-full">Check</span>
-                      ) : (
-                        <span className="bg-green-550/10 text-green-400 border border-green-500/20 text-[9px] font-bold px-2 py-0.5 rounded-full">Ok</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 bg-slate-950 p-4 border border-slate-850 rounded-xl text-[10px] text-slate-500 leading-normal flex items-center gap-2">
-              <span className="text-slate-400">💡</span>
-              <span>Minimal Dashboard Overview. Only active care coordination reminders route here, lowering clinician cognitive load.</span>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs uppercase tracking-widest font-bold text-slate-500 font-mono">Centralized Control</span>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-              Remote Patient <br/>
-              Monitoring Center
-            </h3>
-            <div className="space-y-4 text-slate-350 text-sm sm:text-base leading-relaxed font-normal">
-              <p>
-                Healthcare teams need visibility without increasing operational complexity.
-              </p>
-              <p>
-                The GOQii RPMC provides a centralized view of individuals enrolled in connected care programs, helping teams stay informed, prioritize attention, and coordinate interventions when needed.
-              </p>
-              <p>
-                Designed for scalability and simplicity, it supports organizations managing diverse populations across multiple care pathways.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Section 5B: GOQii RPMC Kit */}
-      <section className="py-16 sm:py-24 bg-white border-t border-slate-100">
+      {/* Section 5: GOQii RPMC Kit */}
+      <section id="rpmc-kit" className="py-16 sm:py-24 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           {/* Header */}
@@ -481,7 +359,7 @@ const App: React.FC = () => {
           </div>
 
           {/* What's Included */}
-          <div className="space-y-10">
+          <div id="kit-devices" className="space-y-10 scroll-mt-24">
             <div className="max-w-2xl">
               <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900">What's Included</h4>
               <p className="text-slate-500 text-sm mt-2">
@@ -533,7 +411,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Process Infographic section */}
-          <div className="space-y-12 pt-12 border-t border-slate-100">
+          <div id="workflow-pipeline" className="space-y-12 pt-12 border-t border-slate-100 scroll-mt-24">
             <div className="max-w-3xl">
               <span className="text-xs uppercase tracking-widest font-bold text-slate-400 font-mono">Workflow Pipeline</span>
               <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">From Device to Clinical Action</h4>
@@ -607,7 +485,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Built for Continuous Care */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12">
+          <div id="continuous-care" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12 scroll-mt-24">
             <div className="lg:col-span-5 space-y-5">
               <span className="text-xs uppercase tracking-widest font-bold text-slate-400 font-mono">Reliable Support</span>
               <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">Built for Continuous Care</h4>
@@ -634,7 +512,7 @@ const App: React.FC = () => {
 
       {/* Section 6: Built Around Human Engagement */}
       {/* 40% Left (Content) / 60% Right (Image) */}
-      <section className="py-16 sm:py-24 bg-[#FAF9F5] border-b border-slate-100">
+      <section id="human-engagement" className="py-16 sm:py-24 bg-[#FAF9F5] border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Content */}
@@ -672,7 +550,7 @@ const App: React.FC = () => {
 
       {/* Section 7: Designed To Work With Existing Systems */}
       {/* 60% Left (Illustration) / 40% Right (Content) */}
-      <section className="py-16 sm:py-24 bg-white">
+      <section id="integrations" className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Minimal illustration diagram of stack */}
@@ -727,42 +605,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 9: Trusted For Connected Care */}
-      <section id="compliance" className="py-16 sm:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          <div className="space-y-4">
-            <span className="text-xs uppercase tracking-widest font-bold text-slate-400 font-mono">Enterprise Ready</span>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              Trusted For Connected Care
-            </h3>
-            <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto">
-              Built with enterprise-grade security, privacy, and compliance standards to support healthcare organizations across regions and care models.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { label: "Secure infrastructure", desc: "Data protection standards", icon: <Shield className="w-4 h-4" /> },
-              { label: "Data privacy controls", desc: "GDPR & clinical access keys", icon: <Lock className="w-4 h-4" /> },
-              { label: "Healthcare compliance", desc: "Interoperability regulations", icon: <ClipboardCheck className="w-4 h-4" /> },
-              { label: "Scalable architecture", desc: "ISO and high throughput ready", icon: <Cpu className="w-4 h-4" /> }
-            ].map((cert, i) => (
-              <div key={i} className="bg-[#FAF9F5] border border-slate-200/50 p-4 sm:p-6 rounded-2xl text-left hover:scale-[1.01] transition-transform flex flex-col justify-between min-h-[160px]">
-                <div>
-                  <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mb-4">
-                    {cert.icon}
-                  </div>
-                  <h5 className="font-extrabold text-xs text-slate-900 mb-1">{cert.label}</h5>
-                  <p className="text-[10px] text-slate-450 leading-relaxed font-normal">{cert.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Section 10 / Final Call To Action */}
-      <section className="py-32 bg-slate-950 text-white relative overflow-hidden">
+      <section id="get-started" className="py-32 bg-slate-950 text-white relative overflow-hidden">
         {/* Subtle decorative mesh */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_120%,#1e3a8a_20%,transparent_100%)] opacity-30"></div>
         
@@ -794,20 +638,206 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Premium Dark Footer matching exact logo coordinates */}
-      <footer className="py-12 bg-[#0B1B2A] text-slate-400 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center">
-            <img src="https://appcdn.goqii.com/user/storeimg/90627_1775477327.png" alt="GOQii Footer logo" className="h-7 w-auto" />
+      {/* Premium Dark Footer */}
+      <footer className="bg-[#07131F] text-slate-400 border-t border-slate-800/80 pt-16 pb-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12">
+          {/* Main Footer Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+            {/* Brand column */}
+            <div className="lg:col-span-2 space-y-4">
+              <div className="flex items-center">
+                <a href="#overview" className="inline-block hover:opacity-90 transition-opacity">
+                  <img 
+                    src="https://appcdn.goqii.com/storeimg/8239_1788242647.png" 
+                    alt="GOQii Connected Care" 
+                    className="h-8 w-auto object-contain" 
+                    referrerPolicy="no-referrer"
+                  />
+                </a>
+              </div>
+              <p className="text-sm text-slate-400 max-w-sm leading-relaxed font-normal">
+                Continuous, connected care platform extending hospital-grade engagement and remote patient monitoring across hospitals, insurers, pharma, and employers.
+              </p>
+              <div className="flex items-center gap-3 pt-2">
+                <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 bg-slate-900/90 border border-slate-800 px-3 py-1 rounded-full font-mono">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  ISO 27001 &amp; HIPAA Compliant
+                </span>
+              </div>
+            </div>
+
+            {/* Column 1: Solutions */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono">
+                <a href="#solutions" className="hover:text-blue-400 transition-colors">Solutions</a>
+              </h4>
+              <ul className="space-y-2.5 text-sm text-slate-400">
+                <li>
+                  <a href="#solutions-hospitals" className="hover:text-white transition-colors block">Hospitals &amp; Health Systems</a>
+                </li>
+                <li>
+                  <a href="#solutions-insurance" className="hover:text-white transition-colors block">Insurance &amp; Payers</a>
+                </li>
+                <li>
+                  <a href="#solutions-pharma" className="hover:text-white transition-colors block">Pharma &amp; Life Sciences</a>
+                </li>
+                <li>
+                  <a href="#solutions-employers" className="hover:text-white transition-colors block">Employers &amp; Workplaces</a>
+                </li>
+                <li>
+                  <a href="#care-continuity" className="hover:text-white transition-colors block text-xs text-slate-400">Care Beyond Discharge</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 2: Platform */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono">
+                <a href="#rpmc-kit" className="hover:text-blue-400 transition-colors">Platform</a>
+              </h4>
+              <ul className="space-y-2.5 text-sm text-slate-400">
+                <li>
+                  <a href="#rpmc-kit" className="hover:text-white transition-colors block">GOQii RPMC Kit</a>
+                </li>
+                <li>
+                  <a href="#kit-devices" className="hover:text-white transition-colors block">Monitoring Devices</a>
+                </li>
+                <li>
+                  <a href="#workflow-pipeline" className="hover:text-white transition-colors block">Clinical Workflow</a>
+                </li>
+                <li>
+                  <a href="#continuous-care" className="hover:text-white transition-colors block">Continuous Care Model</a>
+                </li>
+                <li>
+                  <a href="#human-engagement" className="hover:text-white transition-colors block">Human Coaching &amp; Support</a>
+                </li>
+                <li>
+                  <a href="#integrations" className="hover:text-white transition-colors block">Systems Integration</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Contact / Actions */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono">Get Started</h4>
+              <div className="space-y-2.5">
+                <button
+                  type="button"
+                  onClick={() => openModal('expert')}
+                  className="block text-left text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                >
+                  Talk to Healthcare Experts &rarr;
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openModal('demo')}
+                  className="block text-left text-sm text-slate-300 hover:text-white font-medium transition-colors"
+                >
+                  Request a Platform Demo &rarr;
+                </button>
+                <a
+                  href="#ecosystem"
+                  className="block text-left text-xs text-slate-400 hover:text-slate-300 transition-colors pt-2"
+                >
+                  Explore Care Ecosystem &rarr;
+                </a>
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-slate-400 font-medium text-center max-w-md">
-            Hospitals · Insurers · Pharma Organizations · Employers · Active Care Coordination Streams
-          </p>
-          <div className="text-xs font-mono font-bold text-slate-500 text-right">
-            &copy; 2026 GOQii Inc. All rights reserved.
+
+          {/* Bottom Row */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>
+              &copy; 2026 GOQii Inc. All rights reserved. Hospital-Grade Connected Care.
+            </p>
+            <div className="flex items-center gap-6 text-slate-400">
+              <Link to="/data-protection" className="hover:text-white transition-colors">Data Protection</Link>
+              <Link to="/privacy-controls" className="hover:text-white transition-colors">Privacy Controls</Link>
+            </div>
           </div>
         </div>
       </footer>
+    </div>
+  );
+};
+
+const App: React.FC = () => {
+  const [activeModal, setActiveModal] = useState<'demo' | 'expert' | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [selectedJourneyTab, setSelectedJourneyTab] = useState<string>('recovery');
+  const [expertForm, setExpertForm] = useState({
+    fullName: '',
+    email: '',
+    organization: '',
+    role: '',
+    topic: '',
+    goals: '',
+    contactMethod: 'Email'
+  });
+
+  const closeAll = () => {
+    setActiveModal(null);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setExpertForm({
+        fullName: '',
+        email: '',
+        organization: '',
+        role: '',
+        topic: '',
+        goals: '',
+        contactMethod: 'Email'
+      });
+    }, 300);
+  };
+
+  const handleExpertInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setExpertForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
+  return (
+    <>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <MainLandingPage 
+              openModal={setActiveModal} 
+              selectedJourneyTab={selectedJourneyTab} 
+              setSelectedJourneyTab={setSelectedJourneyTab} 
+            />
+          } 
+        />
+        <Route 
+          path="/data-protection" 
+          element={<DataProtection openModal={setActiveModal} />} 
+        />
+        <Route 
+          path="/privacy-controls" 
+          element={<PrivacyControls openModal={setActiveModal} />} 
+        />
+        <Route 
+          path="*" 
+          element={
+            <MainLandingPage 
+              openModal={setActiveModal} 
+              selectedJourneyTab={selectedJourneyTab} 
+              setSelectedJourneyTab={setSelectedJourneyTab} 
+            />
+          } 
+        />
+      </Routes>
 
       {/* Styled Modals for Contact Actions */}
       {activeModal && (
@@ -1046,8 +1076,7 @@ const App: React.FC = () => {
           </div>
         </>
       )}
-
-    </div>
+    </>
   );
 };
 
